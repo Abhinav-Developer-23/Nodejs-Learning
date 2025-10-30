@@ -1,17 +1,25 @@
 const { sequelize } = require('../config/database');
 
-// Import models here when you create them
-// const User = require('./User');
-// const Post = require('./Post');
+// Import models
+const Department = require('./Department');
+const Employee = require('./Employee');
 
-// Define associations here
-// User.hasMany(Post);
-// Post.belongsTo(User);
+// Define associations
+Department.hasMany(Employee, { 
+  foreignKey: 'departmentId',
+  as: 'employees',
+  onDelete: 'RESTRICT',
+  onUpdate: 'CASCADE'
+});
+
+Employee.belongsTo(Department, {
+  foreignKey: 'departmentId',
+  as: 'department'
+});
 
 module.exports = {
   sequelize,
-  // Export models here
-  // User,
-  // Post
+  Department,
+  Employee
 };
 

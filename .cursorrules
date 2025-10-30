@@ -8,6 +8,7 @@
 - Models go in models/ folder
 - Utils contain reusable functions
 - This project is running in windows machine 
+- you must write a industry standard.
 
 ## Code Style
 - Use ES6+ syntax

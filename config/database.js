@@ -2,9 +2,9 @@ const { Sequelize } = require('sequelize');
 
 // Initialize Sequelize with MySQL
 const sequelize = new Sequelize(
-  process.env.DB_NAME || 'your_database',
+  process.env.DB_NAME || 'example_database',
   process.env.DB_USER || 'root',
-  process.env.DB_PASSWORD || '',
+  process.env.DB_PASSWORD || '123456',
   {
     host: process.env.DB_HOST || 'localhost',
     port: process.env.DB_PORT || 3306,
