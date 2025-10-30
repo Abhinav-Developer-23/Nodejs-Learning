@@ -1,0 +1,21 @@
+# Cursor Rules for Node.js Learning Project
+
+## Project Structure
+- Use Express.js for routing
+- Keep database logic in config/database.js
+- Controllers handle business logic
+- Routes define endpoints
+- Models go in models/ folder
+- Utils contain reusable functions
+- This project is running in windows machine 
+
+## Code Style
+- Use ES6+ syntax
+- Follow RESTful API conventions
+- Use async/await for asynchronous operations
+- Error handling should be in try-catch blocks
+
+## Database
+- Use Sequelize ORM
+- MySQL as database
+- Environment variables for credentials
