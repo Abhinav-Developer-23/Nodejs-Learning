@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const departmentController = require('../controllers/departmentController');
 const { validateDepartment, createDepartmentSchema, updateDepartmentSchema } = require('../utils/validations/departmentValidation');
+const requestLogger = require('../middlewares/requestLogger');
+
+// Apply request logger middleware to all department routes
+router.use(requestLogger);
 
 // GET /api/departments - Get all departments (optional employees join with ?include=employees)
 router.get('/', departmentController.getAllDepartments);
