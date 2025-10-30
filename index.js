@@ -1,6 +1,7 @@
 const express = require('express');
 const { connectDB } = require('./config/database');
 const { sequelize } = require('./models');
+const { startGrpcServer } = require('./grpc/departmentServer');
 const routes = require('./routes');
 
 const app = express();
@@ -13,8 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/', routes);
 
-// Connect to database and sync models
-const startServer = async () => {
+// Connect to database and start both servers
+const startServers = async () => {
   try {
     await connectDB();
     
@@ -23,15 +24,19 @@ const startServer = async () => {
     await sequelize.sync({ alter: false });
     console.log('Database models synchronized.');
     
-    // Start server
+    // Start Express server
     app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
+      console.log(`Express server running on http://localhost:${PORT}`);
     });
+    
+    // Start gRPC server (in the same process)
+    startGrpcServer();
+    
   } catch (error) {
-    console.error('Failed to start server:', error);
+    console.error('Failed to start servers:', error);
     process.exit(1);
   }
 };
 
-startServer();
+startServers();
 

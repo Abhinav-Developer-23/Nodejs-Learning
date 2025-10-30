@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+package department;
+
+// Department service definition
+service DepartmentService {
+  // Get all departments
+  rpc GetAllDepartments (GetAllDepartmentsRequest) returns (GetAllDepartmentsResponse);
+  
+  // Get department by ID
+  rpc GetDepartmentById (GetDepartmentByIdRequest) returns (GetDepartmentByIdResponse);
+  
+  // Create new department
+  rpc CreateDepartment (CreateDepartmentRequest) returns (CreateDepartmentResponse);
+  
+  // Update department
+  rpc UpdateDepartment (UpdateDepartmentRequest) returns (UpdateDepartmentResponse);
+  
+  // Delete department
+  rpc DeleteDepartment (DeleteDepartmentRequest) returns (DeleteDepartmentResponse);
+}
+
+// Request messages
+message GetAllDepartmentsRequest {
+  bool include_employees = 1;  // Optional: include employees in response
+}
+
+message GetDepartmentByIdRequest {
+  int32 id = 1;
+}
+
+message CreateDepartmentRequest {
+  string name = 1;
+  string description = 2;
+  double budget = 3;
+}
+
+message UpdateDepartmentRequest {
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+  double budget = 4;
+}
+
+message DeleteDepartmentRequest {
+  int32 id = 1;
+}
+
+// Response messages
+message GetAllDepartmentsResponse {
+  bool success = 1;
+  string message = 2;
+  int32 count = 3;
+  repeated Department departments = 4;
+}
+
+message GetDepartmentByIdResponse {
+  bool success = 1;
+  string message = 2;
+  Department department = 3;
+}
+
+message CreateDepartmentResponse {
+  bool success = 1;
+  string message = 2;
+  Department department = 3;
+}
+
+message UpdateDepartmentResponse {
+  bool success = 1;
+  string message = 2;
+  Department department = 3;
+}
+
+message DeleteDepartmentResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// Department message
+message Department {
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+  double budget = 4;
+  string created_at = 5;
+  string updated_at = 6;
+  repeated Employee employees = 7;  // Optional: employees array
+}
+
+// Employee message (for nested employees)
+message Employee {
+  int32 id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string email = 4;
+  string position = 5;
+  double salary = 6;
+  string hire_date = 7;
+}
+
