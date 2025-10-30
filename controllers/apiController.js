@@ -1,5 +1,6 @@
 const axiosService = require('../utils/axiosService');
 
+// Example curl: curl -X GET http://localhost:3000/api/external
 const getExternalData = async (req, res) => {
   try {
     const data = await axiosService.fetchExternalData();

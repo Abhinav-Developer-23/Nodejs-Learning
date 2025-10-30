@@ -1,5 +1,6 @@
 const { Employee, Department } = require('../models');
 
+// Example curl: curl -X GET http://localhost:3000/api/employees
 // Get all employees with department information
 const getAllEmployees = async (req, res) => {
   try {
@@ -27,6 +28,7 @@ const getAllEmployees = async (req, res) => {
   }
 };
 
+// Example curl: curl -X GET http://localhost:3000/api/employees/1
 // Get employee by ID with department information
 const getEmployeeById = async (req, res) => {
   try {
@@ -61,6 +63,7 @@ const getEmployeeById = async (req, res) => {
   }
 };
 
+// Example curl: curl -X POST http://localhost:3000/api/employees -H "Content-Type: application/json" -d "{\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"john.doe@example.com\",\"position\":\"Software Engineer\",\"salary\":75000.00,\"hireDate\":\"2024-01-15\",\"departmentId\":1}"
 // Create new employee
 const createEmployee = async (req, res) => {
   try {
@@ -111,6 +114,7 @@ const createEmployee = async (req, res) => {
   }
 };
 
+// Example curl: curl -X PUT http://localhost:3000/api/employees/1 -H "Content-Type: application/json" -d "{\"firstName\":\"John\",\"lastName\":\"Smith\",\"position\":\"Senior Software Engineer\",\"salary\":90000.00}"
 // Update employee
 const updateEmployee = async (req, res) => {
   try {
@@ -171,6 +175,7 @@ const updateEmployee = async (req, res) => {
   }
 };
 
+// Example curl: curl -X DELETE http://localhost:3000/api/employees/1
 // Delete employee
 const deleteEmployee = async (req, res) => {
   try {

@@ -1,5 +1,7 @@
 const { Department, Employee } = require('../models');
 
+// Example curl: curl -X GET http://localhost:3000/api/departments
+// Example curl with employees: curl -X GET "http://localhost:3000/api/departments?include=employees"
 // Get all departments with optional employees
 const getAllDepartments = async (req, res) => {
   try {
@@ -30,6 +32,7 @@ const getAllDepartments = async (req, res) => {
   }
 };
 
+// Example curl: curl -X GET http://localhost:3000/api/departments/1
 // Get department by ID with employees
 const getDepartmentById = async (req, res) => {
   try {
@@ -65,6 +68,7 @@ const getDepartmentById = async (req, res) => {
   }
 };
 
+// Example curl: curl -X POST http://localhost:3000/api/departments -H "Content-Type: application/json" -d "{\"name\":\"Engineering\",\"description\":\"Software development and engineering department\",\"budget\":500000.00}"
 // Create new department
 const createDepartment = async (req, res) => {
   try {
@@ -87,6 +91,7 @@ const createDepartment = async (req, res) => {
   }
 };
 
+// Example curl: curl -X PUT http://localhost:3000/api/departments/1 -H "Content-Type: application/json" -d "{\"name\":\"Engineering\",\"description\":\"Software development, QA, and DevOps\",\"budget\":600000.00}"
 // Update department
 const updateDepartment = async (req, res) => {
   try {
@@ -118,6 +123,7 @@ const updateDepartment = async (req, res) => {
   }
 };
 
+// Example curl: curl -X DELETE http://localhost:3000/api/departments/1
 // Delete department
 const deleteDepartment = async (req, res) => {
   try {
